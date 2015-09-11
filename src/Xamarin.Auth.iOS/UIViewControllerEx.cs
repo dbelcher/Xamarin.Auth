@@ -47,7 +47,25 @@ namespace Xamarin.Utilities.iOS
 				};
 			}
 
-			alert.Show ();
+      // This is a work-around to account for localhost attempts on iOS...
+      if (!String.Equals (message, "Could not connect to the server.") &&
+        !String.Equals (message, "Connexion au serveur impossible.") && 
+        !String.Equals (message, "Verbindung zum Server konnte nicht hergestellt werden.")  &&
+        !String.Equals (message, "サーバに接続できませんでした。") &&
+        !String.Equals (message, "Geen verbinding met de server mogelijk.") &&
+        !String.Equals (message, "Impossibile connettersi al server.") &&
+        !String.Equals (message, "No se ha podido establecer conexión con el servidor.") &&
+        !String.Equals (message, "Ei yhteyttä palvelimeen.") &&
+        !String.Equals (message, "Kunde inte ansluta till servern.") &&
+        !String.Equals (message, "서버에 연결할 수 없습니다.") &&
+        !String.Equals (message, "No s’ha pogut connectar al servidor.") &&
+        !String.Equals (message, "K serveru se nelze připojit.") &&
+        !String.Equals (message, "Nie można było połączyć się z serwerem.") &&
+        !String.Equals (message, "未能连接到服务器。") &&
+        !String.Equals (message, "無法連接伺服器。")) {
+        alert.Show ();
+      }
+  
 		}
 	}
 }
